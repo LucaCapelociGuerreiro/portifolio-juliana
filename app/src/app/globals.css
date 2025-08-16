@@ -3,20 +3,48 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --foreground-rgb: 20, 20, 20;
+  --background-start-rgb: 245, 243, 255;  /* Roxo bem clarinho */
   --background-end-rgb: 255, 255, 255;
-  --color-blue-500: #3b82f6;
-  --color-blue-600: #2563eb;
+
+  --color-purple-500: #8b5cf6; /* Roxo principal */
+  --color-purple-600: #7c3aed; /* Hover/destaques */
+  --color-purple-700: #6d28d9; /* Roxo mais escuro */
   --color-gray-200: #e5e7eb;
   --color-gray-700: #374151;
+
+  /* Sistema de backgrounds homogêneos */
+  --bg-primary-light: #ffffff;
+  --bg-secondary-light: #f8fafc;
+  --bg-tertiary-light: #f1f5f9;
+  --bg-accent-light: #faf7ff;
+  
+  --text-primary-light: #1e293b;
+  --text-secondary-light: #475569;
+  --text-muted-light: #64748b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 24, 16, 42;   /* Fundo roxo escuro */
+    --background-end-rgb: 17, 12, 30;
+
+    --color-purple-500: #a78bfa;
+    --color-purple-600: #8b5cf6;
+    --color-purple-700: #7c3aed;
+    --color-gray-200: #9ca3af;
+    --color-gray-700: #111827;
+
+    /* Sistema de backgrounds homogêneos - modo escuro */
+    --bg-primary-light: #0f172a;
+    --bg-secondary-light: #1e293b;
+    --bg-tertiary-light: #334155;
+    --bg-accent-light: #1a1625;
+    
+    --text-primary-light: #f8fafc;
+    --text-secondary-light: #cbd5e1;
+    --text-muted-light: #94a3b8;
   }
 }
 
@@ -29,19 +57,73 @@ body {
   overflow-x: hidden;
   color: rgb(var(--foreground-rgb));
   background-color: rgb(var(--background-start-rgb));
-  font-family: 'Inter', sans-serif;
+  /* Fallback font stack robusto */
+  font-family: var(--font-inter, 'Inter'), 
+               system-ui, 
+               -apple-system, 
+               BlinkMacSystemFont, 
+               'Segoe UI', 
+               Roboto, 
+               'Helvetica Neue', 
+               Arial, 
+               sans-serif;
+  /* Melhora a renderização de texto */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Classes utilitárias para backgrounds homogêneos */
+.bg-section-primary {
+  background-color: var(--bg-primary-light);
+  color: var(--text-primary-light);
+}
+
+.bg-section-secondary {
+  background-color: var(--bg-secondary-light);
+  color: var(--text-primary-light);
+}
+
+.bg-section-tertiary {
+  background-color: var(--bg-tertiary-light);
+  color: var(--text-primary-light);
+}
+
+.bg-section-accent {
+  background-color: var(--bg-accent-light);
+  color: var(--text-primary-light);
+}
+
+.text-section-secondary {
+  color: var(--text-secondary-light);
+}
+
+.text-section-muted {
+  color: var(--text-muted-light);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
+  /* Fallback para headings */
+  font-family: var(--font-inter, 'Inter'), 
+               system-ui, 
+               -apple-system, 
+               BlinkMacSystemFont, 
+               'Segoe UI', 
+               Roboto, 
+               'Helvetica Neue', 
+               Arial, 
+               sans-serif;
 }
 
 button {
+  background-color: var(--color-purple-500);
+  color: #fff;
   transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: var(--color-purple-600);
 }
 
 /* Estilização da barra de rolagem */
@@ -54,12 +136,12 @@ button:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--color-purple-500);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--color-purple-600);
 }
 
 @layer components {
@@ -111,7 +193,7 @@ button:hover {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 123, 255, 0.1);
+  background: rgba(139, 92, 246, 0.1); /* Roxo transparente */
   transform: scale(0, 1);
   transform-origin: right top;
   z-index: -1;
@@ -128,7 +210,7 @@ button:hover {
 
 /* Versão dark mode */
 .dark .nav-item:after {
-  background: rgba(59, 130, 246, 0.2);
+  background: rgba(139, 92, 246, 0.2);
 }
 
 /* Efeitos de parallax e distorção para o Hero */
@@ -185,9 +267,9 @@ button:hover {
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(59, 130, 246, 0.2) 0%,
-    rgba(147, 197, 253, 0.1) 50%,
-    rgba(59, 130, 246, 0) 100%
+    rgba(139, 92, 246, 0.2) 0%,
+    rgba(167, 139, 250, 0.1) 50%,
+    rgba(139, 92, 246, 0) 100%
   );
   z-index: 2;
   pointer-events: none;
@@ -198,8 +280,8 @@ button:hover {
   inset: 0;
   background: radial-gradient(
     circle at var(--x, 50%) var(--y, 50%),
-    rgba(59, 130, 246, 0.2) 0%,
-    rgba(59, 130, 246, 0) 60%
+    rgba(139, 92, 246, 0.2) 0%,
+    rgba(139, 92, 246, 0) 60%
   );
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -219,7 +301,7 @@ button:hover {
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: var(--color-blue-500);
+  background-color: var(--color-purple-500);
   border-radius: 3px;
 }
 
@@ -228,7 +310,7 @@ button:hover {
 }
 
 .dark .scrollbar-thin::-webkit-scrollbar-thumb {
-  background-color: var(--color-blue-600);
+  background-color: var(--color-purple-600);
 }
 
 /* Estilos para o carrossel Embla */

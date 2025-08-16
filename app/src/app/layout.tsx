@@ -1,28 +1,53 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { LanguageProvider } from './context/LanguageContext';
+import { LanguageProvider } from './context/LanguageContext'; // se o arquivo estiver em app/context
 
-const inter = Inter({ subsets: ['latin'] });
+// Configuração do Inter com fallbacks robustos
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap', // Melhora performance e evita FOIT
+  fallback: [
+    'system-ui',
+    '-apple-system', 
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'sans-serif'
+  ],
+  adjustFontFallback: true, // Ajusta métricas dos fallbacks
+  preload: true,
+  variable: '--font-inter'
+});
 
 export const metadata: Metadata = {
-  title: 'Luca.cloud | Solutions Architect',
-  description: 'Solutions Architect specializing in DevOps and Cloud. Experienced in AWS, Azure, and modern cloud technologies.',
-  keywords: ['Solutions Architect', 'DevOps', 'Cloud', 'AWS', 'Azure', 'Infrastructure as Code', 'CI/CD', 'Kubernetes'],
-  authors: [{ name: 'Luca' }],
-  creator: 'Luca',
+  title: 'Juliana Kaiza Rodrigues do Nascimento | Portfolio',
+  description: 'Portfólio de Analista de SEO.',
+  keywords: ['SEO', 'Analista de SEO', 'Otimização de Sites', 'Link Building', 'Core Web Vitals', 'Next.js', 'React'],
+  authors: [{ name: 'Juliana Kaiza Rodrigues do Nascimento' }],
+  creator: 'Juliana Kaiza Rodrigues do Nascimento',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/images/profile.jpg',
+  },
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: 'https://luca.cloud',
-    title: 'Luca.cloud | Solutions Architect',
-    description: 'Solutions Architect specializing in DevOps and Cloud. Experienced in AWS, Azure, and modern cloud technologies.',
-    siteName: 'Luca.cloud',
+    locale: 'pt_BR',
+    url: 'https://portfolio.example.com/juliana',
+    title: 'Juliana Kaiza Rodrigues do Nascimento | Portfolio',
+    description: 'Portfólio de Analista de SEO.',
+    siteName: 'Juliana Portfolio',
+    images: ['/images/profile.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Luca.cloud | Solutions Architect',
-    description: 'Solutions Architect specializing in DevOps and Cloud. Experienced in AWS, Azure, and modern cloud technologies.',
+    title: 'Juliana Kaiza Rodrigues do Nascimento | Portfolio',
+    description: 'Portfólio de Analista de SEO.',
+    images: ['/images/profile.jpg'],
   },
   robots: {
     index: true,
@@ -36,8 +61,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100`}>
+    <html lang="pt-BR">
+      <head>
+        {/* Preconnect para Google Fonts com fallback */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* DNS prefetch como fallback adicional */}
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+      </head>
+      {/* Removi classes que forçavam bg/text do Tailwind para deixar o globals.css controlar as cores roxas */}
+      <body className={`${inter.className} ${inter.variable}`}>
         <LanguageProvider>
           {children}
         </LanguageProvider>

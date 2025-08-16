@@ -1,4 +1,4 @@
-# Luca.cloud - Portfolio
+# Juliana - Portfolio
 
 Portfolio website showcasing my experience as a Solutions Architect specializing in DevOps and Cloud.
 

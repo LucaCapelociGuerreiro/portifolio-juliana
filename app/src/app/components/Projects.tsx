@@ -1,48 +1,44 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Cloud, Server, Lock, GitBranch } from 'lucide-react';
+import { LineChart, MapPin } from 'lucide-react';
 
 const projects = [
   {
-    title: 'Redução de custos em nuvem	',
-    description: 'Liderou a redução de custos em nuvem na Baasic, com a implementação de práticas de GitOps e automação de infraestrutura, além de migração de ambientes para AWS, Google Cloud e IBM Cloud.',
-    icon: Cloud,
-    tags: ['AWS', 'Kubernetes', 'GitLab CI', 'Terraform', 'Microservices'],
+    title: 'Estudo de Caso: Aumento de Tráfego Orgânico – EmpresAqui',
+    description:
+      'Desafio: Queda significativa no tráfego orgânico devido à desindexação em massa. Solução: Auditoria técnica completa, otimização para palavras-chave principais e fortalecimento das linkagens internas priorizando leitura por robôs do Google. Resultado: +59,5% de tráfego orgânico em 4 meses e melhora no ranking para termos de alto valor.',
+    icon: LineChart,
+    tags: ['SEO Técnico', 'On-Page', 'Linkagem Interna', 'Recuperação de Desindexação'],
   },
   {
-    title: 'Automação de Infraestrutura',
-    description: 'Desenvolveu pipeline de IaC para provisionamento automatizado de ambientes multi-cloud usando Terraform e Ansible.',
-    icon: Server,
-    tags: ['Terraform', 'Ansible', 'Multi-cloud', 'IaC', 'Pipeline'],
-  },
-  {
-    title: 'Segurança e Compliance',
-    description: 'Implementou práticas de DevSecOps e garantiu conformidade com padrões de segurança em ambiente regulamentado.',
-    icon: Lock,
-    tags: ['DevSecOps', 'Compliance', 'Security', 'Vault', 'Monitoring'],
-  },
-  {
-    title: 'GitOps e Continuous Deployment',
-    description: 'Estabeleceu práticas de GitOps usando ArgoCD para gerenciamento de configuração e deployment contínuo.',
-    icon: GitBranch,
-    tags: ['GitOps', 'ArgoCD', 'Kubernetes', 'CI/CD', 'Automation'],
+    title: 'Estudo de Caso: SEO Local – Blog EmpresAqui',
+    description:
+      'Desafio: Ausência nas buscas locais. Solução: Otimização do Google My Business e ajustes on-page direcionados ao SEO local. Resultado: aumento expressivo de tráfego local e presença no topo das buscas locais para termos relevantes.',
+    icon: MapPin,
+    tags: ['SEO Local', 'Google My Business', 'On-Page', 'Estratégia Local'],
   },
 ];
 
 const Projects = () => {
+  const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 bg-section-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+          animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+          transition={prefersReducedMotion ? {} : { duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Projetos em Destaque</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            Soluções inovadoras em Cloud e DevOps
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-700 dark:from-purple-400 dark:to-purple-600">
+              Projetos em Destaque
+            </span>
+          </h2>
+          <p className="text-lg text-section-secondary">
+            Estudos de caso e resultados mensuráveis
           </p>
         </motion.div>
 
@@ -50,13 +46,13 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white dark:bg-gray-700 rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow"
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+              animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+              transition={prefersReducedMotion ? {} : { duration: 0.5, delay: index * 0.1 }}
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700"
             >
               <div className="flex items-center mb-4">
-                <project.icon className="w-8 h-8 text-blue-600 dark:text-blue-400 mr-3" />
+                <project.icon aria-hidden className="w-8 h-8 text-purple-600 dark:text-purple-400 mr-3" />
                 <h3 className="text-xl font-semibold">{project.title}</h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
@@ -66,7 +62,7 @@ const Projects = () => {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded-full text-sm"
+                    className="px-3 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 rounded-full text-sm"
                   >
                     {tag}
                   </span>
@@ -80,4 +76,4 @@ const Projects = () => {
   );
 };
 
-export default Projects; 
+export default Projects;
