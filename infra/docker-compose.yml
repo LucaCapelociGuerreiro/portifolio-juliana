@@ -4,8 +4,6 @@
 # Configurações com limitações rigorosas de recursos para Oracle Cloud
 # Compatível com Always Free Tier (1GB RAM, 1/8 OCPU)
 
-version: '3.8'
-
 services:
   # ============================================================================
   # APLICAÇÃO NEXT.JS - CONFIGURAÇÕES ULTRA-RESTRITIVAS
