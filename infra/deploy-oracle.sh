@@ -39,8 +39,14 @@ log_error() {
 log "🚀 Iniciando deploy otimizado para Oracle Cloud"
 
 # Verificar se estamos no diretório correto
-if [ ! -f "package.json" ]; then
-    log_error "package.json não encontrado. Execute o script no diretório do projeto."
+if [ ! -f "../app/package.json" ]; then
+    log_error "package.json não encontrado em ../app/. Verifique se está no diretório infra do projeto."
+    exit 1
+fi
+
+# Verificar se docker-compose.yml existe
+if [ ! -f "docker-compose.yml" ]; then
+    log_error "docker-compose.yml não encontrado. Execute o script no diretório infra."
     exit 1
 fi
 
