@@ -1,0 +1,18 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cwvGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34A853;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#137333;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="url(#cwvGradient)"/>
+  <g fill="white">
+    <path d="M16 8 L20 12 L16 16 L12 12 Z"/>
+    <circle cx="8" cy="20" r="2"/>
+    <circle cx="16" cy="24" r="2"/>
+    <circle cx="24" cy="20" r="2"/>
+    <path d="M10 19 L14 22" stroke="white" stroke-width="1"/>
+    <path d="M18 22 L22 19" stroke="white" stroke-width="1"/>
+    <text x="16" y="6" font-family="Arial" font-size="4" fill="white" text-anchor="middle" font-weight="bold">CWV</text>
+  </g>
+</svg>

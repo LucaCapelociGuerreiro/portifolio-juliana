@@ -1,0 +1,13 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="semrushGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF642D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF7A00;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="url(#semrushGradient)"/>
+  <g fill="white">
+    <path d="M8 12 C8 10 10 8 12 8 L20 8 C22 8 24 10 24 12 L24 16 C24 18 22 20 20 20 L16 20 L16 24 L12 24 L12 16 C12 14 14 12 16 12 L20 12 L20 16 L16 16"/>
+    <circle cx="8" cy="24" r="2"/>
+  </g>
+</svg>

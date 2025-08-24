@@ -1,0 +1,7 @@
+<svg width="30" height="20" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg">
+  <rect width="30" height="20" fill="#009b3a"/>
+  <polygon points="15,2 27,10 15,18 3,10" fill="#ffdf00"/>
+  <circle cx="15" cy="10" r="3.5" fill="#002776"/>
+  <path d="M 12.5 10 Q 15 8 17.5 10" stroke="white" stroke-width="0.5" fill="none"/>
+  <text x="15" y="11.5" font-family="Arial" font-size="1.5" fill="white" text-anchor="middle">★</text>
+</svg>

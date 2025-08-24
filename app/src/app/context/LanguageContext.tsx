@@ -164,7 +164,7 @@ const translations = {
     'nav.projects': 'Projetos',
     'nav.skills': 'Ferramentas',
     'nav.contact': 'Contato',
-
+    'nav.certifications': 'Certificações',
     'nav.education': 'Formação',
     'nav.services': 'Serviços',
     'nav.results': 'Resultados',

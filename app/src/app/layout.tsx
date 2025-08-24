@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
-    apple: '/images/profile.jpg',
+    apple: '/images/profile.svg',
   },
   openGraph: {
     type: 'website',
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
     title: 'Juliana Kaiza Rodrigues do Nascimento | Portfolio',
     description: 'Portfólio de Analista de SEO.',
     siteName: 'Juliana Portfolio',
-    images: ['/images/profile.jpg'],
+    images: ['/images/profile.svg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Juliana Kaiza Rodrigues do Nascimento | Portfolio',
     description: 'Portfólio de Analista de SEO.',
-    images: ['/images/profile.jpg'],
+    images: ['/images/profile.svg'],
   },
   robots: {
     index: true,
@@ -70,8 +70,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
       </head>
-      {/* Removi classes que forçavam bg/text do Tailwind para deixar o globals.css controlar as cores roxas */}
-      <body className={`${inter.className} ${inter.variable}`}>
+      {/* Aplicando classes base do tema */}
+      <body className={`${inter.className} ${inter.variable} bg-section-primary text-gray-900 dark:text-white`}>
         <LanguageProvider>
           {children}
         </LanguageProvider>
