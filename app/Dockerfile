@@ -1,37 +1,21 @@
-# =========================
-# NEXT.JS PRODUCTION BUILD
-# =========================
+# Build + Run simples (sem standalone)
+FROM node:20-alpine
 
-# 1) Dependências
-FROM node:20-alpine AS deps
 WORKDIR /app
+
+# Instala TODAS as deps (inclui devDeps p/ Tailwind/PostCSS no build)
 COPY package*.json ./
 RUN npm ci
 
-# 2) Build
-FROM node:20-alpine AS builder
-WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+# Copia o código e faz o build
 COPY . .
+ENV NEXT_TELEMETRY_DISABLED=1
 RUN npm run build
 
-# 3) Runner (standalone)
-FROM node:20-alpine AS runner
-WORKDIR /app
-
+# Produção
 ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 
-# Usuário não-root (opcional, mas recomendado)
-RUN addgroup -S nextjs && adduser -S nextjs -G nextjs
-USER nextjs
-
-# **IMPORTANTE**: copiar standalone + static + public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/public ./public
-
 EXPOSE 3000
-CMD ["node", "server.js"]
+CMD ["npm","start"]   # "start": "next start -p 3000"
