@@ -103,11 +103,12 @@ const ProfileImage = ({ springImgX, springImgY }: { springImgX: MotionValue<numb
       >
         <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-transparent rounded-full z-10 pointer-events-none" />
         <Image
-          src="/images/profile.svg"
+          src="/images/profile.jpg"
           alt="Juliana Kaiza Rodrigues do Nascimento - Analista de SEO"
           fill
           className="rounded-full object-cover"
           priority
+          unoptimized
         />
       </div>
     </motion.div>

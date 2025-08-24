@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
-    apple: '/images/profile.svg',
+    apple: '/images/profile.jpg',
   },
   openGraph: {
     type: 'website',
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
     title: 'Juliana Kaiza Rodrigues do Nascimento | Portfolio',
     description: 'Portfólio de Analista de SEO.',
     siteName: 'Juliana Portfolio',
-    images: ['/images/profile.svg'],
+    images: ['/images/profile.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Juliana Kaiza Rodrigues do Nascimento | Portfolio',
     description: 'Portfólio de Analista de SEO.',
-    images: ['/images/profile.svg'],
+    images: ['/images/profile.jpg'],
   },
   robots: {
     index: true,
