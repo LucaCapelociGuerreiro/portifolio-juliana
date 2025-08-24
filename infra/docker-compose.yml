@@ -6,102 +6,80 @@
 version: '2.4'
 
 services:
-  # ============================================================================
-  # APLICAÇÃO NEXT.JS
-  # ============================================================================
   app:
     build:
       context: ../app
       dockerfile: Dockerfile
       args:
         - NODE_ENV=production
-    
     container_name: portfolio-app
-    
-    # Limitações de recursos (sintaxe v2.4)
     mem_limit: 400m
     mem_reservation: 200m
     cpus: 0.5
-    
-    # Variáveis de ambiente
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
       - NODE_OPTIONS=--max-old-space-size=256
       - PORT=3000
       - HOSTNAME=0.0.0.0
-    
-    # Mapeamento de porta
     ports:
-      - "3000:3000"
-    
-    # Política de restart
+      - "80:3000"     # << importante para testar no IP público
+      # - "3000:3000" # (opcional) se quiser testar pela 3000 também
     restart: unless-stopped
-    
-    # Health check
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://127.0.0.1:3000/"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
-    
-    # Configurações de logging
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    
-    # Rede
     networks:
       - portfolio-network
 
   # ============================================================================
   # NGINX REVERSE PROXY
   # ============================================================================
-  nginx:
-    image: nginx:alpine
-    container_name: portfolio-nginx
-    
-    # Limitações de recursos
-    mem_limit: 100m
-    mem_reservation: 50m
-    cpus: 0.2
-    
-    # Mapeamento de portas
-    ports:
-      - "80:80"
-    
-    # Volumes
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./nginx-cache:/var/cache/nginx
-    
-    # Dependências
-    depends_on:
-      - app
-    
-    # Política de restart
-    restart: unless-stopped
-    
-    # Health check
-    healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80/"]
-      interval: 30s
-      timeout: 5s
-      retries: 3
-    
-    # Logging
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "5m"
-        max-file: "2"
-    
-    # Rede
-    networks:
-      - portfolio-network
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: portfolio-nginx
+  #   
+  #   # Limitações de recursos
+  #   mem_limit: 100m
+  #   mem_reservation: 50m
+  #   cpus: 0.2
+  #   
+  #   # Mapeamento de portas
+  #   ports:
+  #     - "80:80"
+  #   
+  #   # Volumes
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./nginx-cache:/var/cache/nginx
+  #   
+  #   # Dependências
+  #   depends_on:
+  #     - app
+  #   
+  #   # Política de restart
+  #   restart: unless-stopped
+  #   
+  #   # Health check
+  #   healthcheck:
+  #     test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:80/"]
+  #     interval: 30s
+  #     timeout: 5s
+  #     retries: 3
+  #   
+  #   # Logging
+  #   logging:
+  #     driver: "json-file"
+  #     options:
+  #       max-size: "5m"
+  #       max-file: "2"
+  #   
+  #   # Rede
+  #   networks:
+  #     - portfolio-network
 
 # ==============================================================================
 # CONFIGURAÇÕES DE REDE
