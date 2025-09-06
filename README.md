@@ -1,158 +1,209 @@
-# 🚀 Portfolio SEO - Especialista em SEO
+# Portfolio Juliana Kaiza
 
-Um portfolio profissional moderno para analistas de SEO, desenvolvido com Next.js 14 e otimizado para performance e SEO desde a concepção.
+Um portfólio moderno e responsivo construído com Next.js 14, TypeScript, Tailwind CSS e Framer Motion.
 
-## ✨ Características
+## 🚀 Tecnologias Utilizadas
 
-### 🎯 Funcionalidades Principais
-- **Hero Section** impactante com call-to-actions otimizados
-- **Página Sobre** detalhada com experiência profissional
-- **Portfolio** com casos de estudo reais e métricas
-- **Formulário de contato** funcional com validação
-- **Design responsivo** e acessível (WCAG 2.1 AA)
-- **Navegação intuitiva** com menu mobile
-
-### 🔧 Stack Tecnológico
-- **Framework**: Next.js 14 (App Router)
-- **Linguagem**: TypeScript
-- **Estilização**: Tailwind CSS + shadcn/ui
-- **Animações**: Framer Motion
-- **Formulários**: React Hook Form + Zod
-- **Ícones**: Lucide React
-
-### 🚀 Otimizações de SEO
-- **Meta tags** otimizadas para cada página
-- **Structured data** (Schema.org) implementado
-- **Sitemap.xml** gerado automaticamente
-- **Robots.txt** configurado
-- **Open Graph** e Twitter Cards
-- **Core Web Vitals** otimizados
-- **Performance** superior a 95 no Lighthouse
+- **Next.js 14** - Framework React com App Router
+- **TypeScript** - Type safety e melhor DX
+- **Tailwind CSS** - Styling utilitário e responsivo
+- **Framer Motion** - Animações suaves e interativas
+- **React Hook Form** - Gerenciamento de formulários
+- **Lucide React** - Ícones modernos
+- **Next Themes** - Suporte a dark/light mode
 
 ## 🛠️ Instalação e Desenvolvimento
 
 ### Pré-requisitos
+
 - Node.js 18+ 
-- npm, yarn ou pnpm
+- npm ou yarn
 
-### Configuração Local
+### Instalação
 
-1. **Instale as dependências**
 ```bash
+# Clone o repositório
+git clone https://github.com/julianakaiza/portfolio.git
+cd portfolio
+
+# Instale as dependências
 npm install
-```
 
-2. **Execute o servidor de desenvolvimento**
-```bash
+# Execute em modo de desenvolvimento
 npm run dev
 ```
 
-3. **Abra no navegador**
-```
-http://localhost:3000
-```
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-### Scripts Disponíveis
+## 📦 Build e Deploy
+
+### Build para Produção
 
 ```bash
-npm run dev          # Servidor de desenvolvimento
-npm run build        # Build para produção
-npm run start        # Servidor de produção
-npm run lint         # Linter ESLint
+# Gerar build otimizado
+npm run build
+
+# Executar build localmente
+npm start
 ```
 
-## 📱 Estrutura do Projeto
+### Deploy na Oracle Cloud
 
-```
-portfolio-seo/
-├── app/                    # App Router (Next.js 14)
-│   ├── layout.tsx         # Layout principal
-│   ├── page.tsx           # Página inicial
-│   ├── sobre/             # Página sobre
-│   ├── portfolio/         # Showcase de projetos
-│   ├── contato/           # Página de contato
-│   ├── sitemap.ts         # Sitemap dinâmico
-│   └── globals.css        # Estilos globais
-│
-├── components/             # Componentes reutilizáveis
-│   ├── ui/                # Componentes shadcn/ui
-│   ├── layout/            # Header, Footer, Navigation
-│   ├── sections/          # Seções específicas
-│   ├── forms/             # Formulários
-│   └── seo/               # Componentes SEO
-│
-├── lib/                   # Utilitários e configurações
-│   ├── utils.ts           # Funções utilitárias
-│   ├── validations.ts     # Schemas de validação
-│   ├── constants.ts       # Constantes da aplicação
-│   └── structured-data.ts # Dados estruturados
-│
-├── content/               # Conteúdo estruturado
-│   ├── cases/             # Casos de estudo
-│   └── data/              # Dados estáticos
-│
-└── public/                # Assets estáticos
-    ├── images/            # Imagens otimizadas
-    ├── icons/             # Ícones e favicons
-    └── robots.txt         # Configuração para crawlers
+#### 1. Preparação do Servidor
+
+```bash
+# Conectar ao servidor Oracle Cloud
+ssh -i your-key.pem ubuntu@your-server-ip
+
+# Instalar Node.js
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Instalar PM2 para gerenciamento de processos
+sudo npm install -g pm2
 ```
 
-## 🔧 Configuração SEO
+#### 2. Deploy da Aplicação
 
-### Meta Tags Implementadas
-- Title tags únicos e descritivos
-- Meta descriptions otimizadas (150-160 chars)
-- Open Graph e Twitter Cards
-- Canonical URLs
-- Viewport e charset
+```bash
+# No servidor, clone o repositório
+git clone https://github.com/julianakaiza/portfolio.git
+cd portfolio
 
-### Dados Estruturados
-- Schema.org Person
-- Schema.org Organization
-- Schema.org Service
-- Breadcrumb navigation
+# Instalar dependências
+npm install
 
-### Performance
-- Core Web Vitals otimizados
-- Images com next/image
-- Lazy loading implementado
-- Minificação automática
-- Compression gzip
+# Build da aplicação
+npm run build
 
-## 📊 Métricas de Performance
+# Iniciar com PM2
+pm2 start npm --name "portfolio" -- start
+pm2 save
+pm2 startup
+```
 
-### Lighthouse Scores Alvo
-- **Performance**: > 95
-- **Accessibility**: > 95
-- **Best Practices**: > 95
-- **SEO**: > 95
+#### 3. Configuração do Nginx
 
-### Core Web Vitals
-- **LCP** (Largest Contentful Paint): < 2.5s
-- **FID** (First Input Delay): < 100ms
-- **CLS** (Cumulative Layout Shift): < 0.1
+```bash
+# Instalar Nginx
+sudo apt update
+sudo apt install nginx
 
-## 🎨 Customização
+# Configurar virtual host
+sudo nano /etc/nginx/sites-available/julianakaiza.site
+```
 
-### Branding
-Edite `/lib/constants.ts` para personalizar:
-- Nome e descrição do site
+Adicione a configuração:
+
+```nginx
+server {
+    listen 80;
+    server_name julianakaiza.site www.julianakaiza.site;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+```bash
+# Ativar o site
+sudo ln -s /etc/nginx/sites-available/julianakaiza.site /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl restart nginx
+```
+
+#### 4. SSL com Let's Encrypt
+
+```bash
+# Instalar Certbot
+sudo apt install certbot python3-certbot-nginx
+
+# Obter certificado SSL
+sudo certbot --nginx -d julianakaiza.site -d www.julianakaiza.site
+
+# Configurar renovação automática
+sudo crontab -e
+# Adicionar: 0 12 * * * /usr/bin/certbot renew --quiet
+```
+
+## 🔧 Configuração de Domínio
+
+1. **DNS Records**: Configure os registros A/AAAA no seu provedor de domínio apontando para o IP da Oracle Cloud
+2. **Firewall**: Abra as portas 80 e 443 no Security Group da Oracle Cloud
+3. **SSL**: O certificado será renovado automaticamente
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── app/                 # App Router (Next.js 14)
+│   ├── globals.css     # Estilos globais
+│   ├── layout.tsx      # Layout raiz
+│   └── page.tsx        # Página inicial
+├── components/         # Componentes React
+│   ├── ui/            # Componentes UI reutilizáveis
+│   ├── sections/      # Seções do portfólio
+│   ├── navigation.tsx # Navegação
+│   └── footer.tsx     # Rodapé
+└── lib/               # Utilitários e constantes
+    ├── constants.ts   # Dados do portfólio
+    └── utils.ts       # Funções utilitárias
+```
+
+## 🎨 Personalização
+
+### Cores e Tema
+
+Edite `tailwind.config.js` para personalizar as cores:
+
+```js
+theme: {
+  extend: {
+    colors: {
+      primary: {
+        // Suas cores primárias
+      }
+    }
+  }
+}
+```
+
+### Conteúdo
+
+Atualize `src/lib/constants.ts` com suas informações:
+
+- Dados pessoais
+- Projetos
+- Experiência profissional
 - Links sociais
-- Informações de contato
-- Serviços oferecidos
 
-### Casos de Estudo
-Adicione novos casos em `/content/cases/`:
-1. Crie um novo arquivo `.ts`
-2. Exporte o objeto com as informações
-3. Importe no `/content/cases/index.ts`
+## 📱 Features
 
-### Estilos
-O projeto usa Tailwind CSS com shadcn/ui:
-- Cores e tipografia: `/app/globals.css`
-- Componentes: `/components/ui/`
-- Temas: Configurável no CSS
+- ✅ Design responsivo
+- ✅ Dark/Light mode
+- ✅ Animações suaves
+- ✅ SEO otimizado
+- ✅ Performance otimizada
+- ✅ Formulário de contato
+- ✅ Navegação suave
+- ✅ Acessibilidade
 
----
+## 📄 Licença
 
-💡 **Dica**: Este portfolio foi desenvolvido seguindo as melhores práticas de SEO para servir como exemplo prático e referência para outros profissionais da área.
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 👩‍💻 Autora
+
+**Juliana Kaiza**
+- Website: [julianakaiza.site](https://julianakaiza.site)
+- LinkedIn: [linkedin.com/in/julianakaiza](https://linkedin.com/in/julianakaiza)
+- GitHub: [github.com/julianakaiza](https://github.com/julianakaiza)
