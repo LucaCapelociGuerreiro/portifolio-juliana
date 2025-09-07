@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Heart } from 'lucide-react'
+import { Linkedin, Mail, Heart } from 'lucide-react'
 import { SITE_CONFIG, NAVIGATION_ITEMS } from '@/lib/constants'
 import { scrollToSection } from '@/lib/utils'
 
@@ -24,18 +24,10 @@ export function Footer() {
           >
             <h3 className="text-2xl font-bold mb-4">{SITE_CONFIG.name}</h3>
             <p className="text-gray-400 mb-6 max-w-md">
-              Desenvolvedora Fullstack apaixonada por criar experiências digitais 
-              excepcionais que conectam pessoas e resolvem problemas reais.
+              Analista de SEO e Criadora de Conteúdo especializada em transformar 
+              estratégias de SEO em resultados mensuráveis e aumentar a visibilidade online.
             </p>
             <div className="flex space-x-4">
-              <a
-                href={SITE_CONFIG.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
               <a
                 href={SITE_CONFIG.links.linkedin}
                 target="_blank"
@@ -92,8 +84,8 @@ export function Footer() {
                   {SITE_CONFIG.links.email}
                 </a>
               </li>
-              <li>São Paulo, SP - Brasil</li>
-              <li>+55 (11) 99999-9999</li>
+              <li>Aracaju, SE - Brasil</li>
+              <li>+55 (79) 99992-2046</li>
             </ul>
           </motion.div>
         </div>
@@ -110,7 +102,7 @@ export function Footer() {
             © {currentYear} {SITE_CONFIG.name}. Todos os direitos reservados.
           </p>
           <p className="text-gray-400 text-sm flex items-center mt-4 sm:mt-0">
-            Feito com <Heart className="w-4 h-4 mx-1 text-red-500" /> e muito código
+            Feito com <Heart className="w-4 h-4 mx-1 text-red-500" />
           </p>
         </motion.div>
       </div>

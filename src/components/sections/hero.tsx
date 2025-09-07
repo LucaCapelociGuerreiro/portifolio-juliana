@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react'
+import { ArrowDown, Linkedin, Mail } from 'lucide-react'
 import { Button } from '../ui/button'
 import { SITE_CONFIG } from '@/lib/constants'
 import { scrollToSection } from '@/lib/utils'
@@ -43,7 +43,7 @@ export function HeroSection() {
           >
             Olá, eu sou{' '}
             <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-              Juliana Kaiza
+              Juliana Kaíza
             </span>
           </motion.h1>
 
@@ -54,7 +54,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto"
           >
-            Desenvolvedora Fullstack & Designer UI/UX apaixonada por criar experiências digitais incríveis
+            Analista de SEO & Criadora de Conteúdo especializada em transformar estratégias de SEO em resultados mensuráveis
           </motion.p>
 
           {/* CTA Buttons */}
@@ -67,7 +67,7 @@ export function HeroSection() {
             <Button
               size="lg"
               onClick={() => scrollToSection('projects')}
-              className="text-lg px-8 py-3"
+              className="text-lg px-8 py-3 bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Ver Projetos
             </Button>
@@ -75,7 +75,7 @@ export function HeroSection() {
               variant="outline"
               size="lg"
               onClick={() => scrollToSection('contact')}
-              className="text-lg px-8 py-3"
+              className="text-lg px-8 py-3 border-2 border-primary-500 text-primary-600 hover:bg-gradient-to-r hover:from-primary-500 hover:to-secondary-500 hover:text-white hover:border-transparent transition-all duration-300"
             >
               Entre em Contato
             </Button>
@@ -88,14 +88,6 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="flex justify-center space-x-6 mb-12"
           >
-            <a
-              href={SITE_CONFIG.links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-            >
-              <Github className="w-6 h-6 text-gray-700 dark:text-gray-300" />
-            </a>
             <a
               href={SITE_CONFIG.links.linkedin}
               target="_blank"

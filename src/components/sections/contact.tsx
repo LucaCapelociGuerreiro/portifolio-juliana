@@ -45,19 +45,19 @@ export function ContactSection() {
     {
       icon: Phone,
       label: 'Telefone',
-      value: '+55 (11) 99999-9999',
-      href: 'tel:+5511999999999',
+      value: '(79) 99992-2046',
+      href: 'tel:+5579999922046',
     },
     {
       icon: MapPin,
       label: 'Localização',
-      value: 'São Paulo, SP - Brasil',
+      value: 'Aruana, Aracaju - SE',
       href: '#',
     },
   ]
 
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="contact" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -70,8 +70,8 @@ export function ContactSection() {
             Entre em Contato
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Tem um projeto em mente? Vamos conversar sobre como posso ajudar a transformar 
-            suas ideias em realidade digital.
+            Tem um projeto de SEO em mente? Vamos conversar sobre como posso ajudar a 
+            aumentar sua visibilidade online e transformar seu tráfego orgânico em resultados reais.
           </p>
         </motion.div>
 
@@ -164,7 +164,7 @@ export function ContactSection() {
                     type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full"
+                    className="w-full bg-gradient-to-r from-primary-500 to-secondary-500 hover:from-primary-600 hover:to-secondary-600 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       'Enviando...'
