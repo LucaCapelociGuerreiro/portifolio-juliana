@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react'
 import { Button } from '../ui/button'
@@ -19,9 +20,16 @@ export function HeroSection() {
             transition={{ duration: 0.5 }}
             className="mb-8"
           >
-            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-primary-400 to-secondary-400 p-1">
-              <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
-                <span className="text-4xl font-bold text-primary-600 dark:text-primary-400">JK</span>
+            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-primary-400 to-secondary-400 p-1 shadow-xl">
+              <div className="w-full h-full rounded-full overflow-hidden">
+                <Image
+                  src="/profile.jpg"
+                  alt="Juliana Kaiza"
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover rounded-full"
+                  priority
+                />
               </div>
             </div>
           </motion.div>
